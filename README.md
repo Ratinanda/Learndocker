@@ -1,6 +1,7 @@
 # Learndocker
-1)yum install -y yum-utils
-2) add the repo.
+# 1)Install the yum utils if not present
+   yum install -y yum-utils
+# 2) add the repo.
 [root@AppServer ~]# yum-config-manager \
 >     --add-repo \
 >     https://download.docker.com/linux/centos/docker-ce.repo
@@ -33,7 +34,7 @@ The following packages have to be updated:
  yum-4.2.17-7.el8_2.noarch      Package manager
 Proceed with changes? [N/y] y
 
-3) install docker 
+# 3) install docker 
 
 [root@AppServer ~]# yum install docker-ce docker-ce-cli containerd.io
 Docker CE Stable - x86_64                                                                                                    347  B/s | 3.8 kB     00:11
@@ -51,8 +52,7 @@ Error:
   - package runc-1.0.0-64.rc10.module_el8.2.0+304+65a3c2ac.x86_64 is filtered out by modular filtering
 (try to add '--allowerasing' to command line to replace conflicting packages or '--skip-broken' to skip uninstallable packages or '--nobest' to use not only best candidate packages)
 [root@AppServer ~]# 
-
-4) if error you can try below.how ever make sure you are not breaking something(at ur risk)
+# 4) if error you can try below.how ever make sure you are not breaking something(at ur risk)
 [root@AppServer ~]# yum install docker-ce docker-ce-cli containerd.io --allowerasing
 Last metadata expiration check: 0:03:51 ago on Fri 30 Oct 2020 09:37:06 PM EDT.
 Dependencies resolved.
@@ -133,8 +133,10 @@ Removed:
 
 Complete!
 [root@AppServer ~]#
-
+# 4)start the docker service
 [root@AppServer ~]# systemctl start docker
+# 5) check the status of docker
+
 [root@AppServer ~]# systemctl status docker
 ● docker.service - Docker Application Container Engine
    Loaded: loaded (/usr/lib/systemd/system/docker.service; disabled; vendor preset: disabled)
@@ -145,3 +147,4 @@ Complete!
    Memory: 42.6M
    CGroup: /system.slice/docker.service
            └─6331 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+# ======================================END=====================
